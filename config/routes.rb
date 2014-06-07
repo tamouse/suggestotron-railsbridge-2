@@ -1,5 +1,12 @@
 SuggestotronRailsbridge2::Application.routes.draw do
-  resources :topics
+  resources :topics do
+    member do
+      get 'upvote'
+      get 'downvote'
+    end
+  end
+  
+  root 'topics#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

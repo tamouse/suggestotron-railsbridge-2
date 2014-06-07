@@ -1,9 +1,15 @@
 !!!
 %html
   %head
+    %meta{:name=>"viewport",  :content=>"width=device-width, initial-scale=1"}
     %title SuggestotronRailsbridge2
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = yield
+    %nav.navbar.navbar-default.navbar-fixed-to-top{:role => 'navigation'}
+      .container
+        %a.navbar-brand{:href => '#'} RailsBridge Suggestotron
+        %p.navbar-text.navbar-right June 7th, 2014
+    .container
+      = yield

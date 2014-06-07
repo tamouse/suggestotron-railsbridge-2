@@ -1,19 +1,26 @@
 %h1 Listing topics
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th
-      %th
-      %th
-  %tbody
-    - @topics.each do |topic|
-      %tr
-        %td= topic.name
-        %td= topic.description
-        %td= link_to 'Show', topic
-        %td= link_to 'Edit', edit_topic_path(topic)
-        %td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
+.row
+  .col-md-2
+    %h3 Name
+  .col-md-6
+    %h3 Description
+  .col-md-4 &nbsp;
+%hr/
+- @topics.each do |topic|
+  .row
+    .col-md-2
+      = link_to topic.name, topic_path(topic), :title => "Show topic details", :style => "text-decoration: underline"
+      %span.badge= topic.votes.count
+    .col-md-6= topic.description
+    .col-md-4.text-right
+      = link_to upvote_topic_path(topic), :class => 'btn btn-default', :title => "Up-vote topic", :data => {:toggle => 'tooltip', :placement => 'top'} do
+        %i.glyphicon.glyphicon-thumbs-up
+      = link_to downvote_topic_path(topic), :class => 'btn btn-default', :title => "Down-vote topic", :data => {:toggle => 'tooltip', :placement => 'top'} do
+        %i.glyphicon.glyphicon-thumbs-down
+      = link_to edit_topic_path(topic), :class => 'btn btn-default', :title => 'Edit topic', :data => {:toggle => 'tooltip', :placement => 'top'} do
+        %i.glyphicon.glyphicon-edit
+      = link_to topic, method: :delete, :class => 'btn btn-default', :title => "Remove topic", data: {:toggle => 'tooltip', :placement => 'top', confirm: 'Are you sure?' } do
+        %i.glyphicon.glyphicon-remove
+      
 %br/
-= link_to 'New Topic', new_topic_path
+= link_to 'Add a new topic', new_topic_path, :class => "btn btn-default"
