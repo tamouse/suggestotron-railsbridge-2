@@ -17,6 +17,7 @@ end
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
+gem 'bootstrap_form'
 
 gem 'haml'
 gem 'html2haml'

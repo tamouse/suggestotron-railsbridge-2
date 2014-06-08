@@ -1,10 +1,5 @@
-%h1 Listing topics
-.row
-  .col-md-2
-    %h3 Name
-  .col-md-6
-    %h3 Description
-  .col-md-4 &nbsp;
+- content_for :title do
+  Topics
 %hr/
 - @topics.each do |topic|
   .row
@@ -22,5 +17,3 @@
       = link_to topic, method: :delete, :class => 'btn btn-default', :title => "Remove topic", data: {:toggle => 'tooltip', :placement => 'top', confirm: 'Are you sure?' } do
         %i.glyphicon.glyphicon-remove
       
-%br/
-= link_to 'Add a new topic', new_topic_path, :class => "btn btn-default"

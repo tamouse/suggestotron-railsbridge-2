@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /topics
   # GET /topics.json
@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to topics_path, notice: 'Topic was successfully created.' }
         format.json { render action: 'show', status: :created, location: @topic }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to topics_path, notice: 'Topic was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,25 +57,23 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url }
+      format.html { redirect_to topics_url, notice: 'Topic was successfully deleted' }
       format.json { head :no_content }
     end
   end
 
   # GET /topics/1/upvote(.format)
   def upvote
-    @topic = Topic.find params[:id]
     @topic.votes.create
-    redirect_to(topics_path)
+    redirect_to(topics_path, notice: "Topic #{@topic.id} upvoted!")
   end
   
   # GET /topics/1/downvote(.format)
   def downvote
-    @topic = Topic.find params[:id]
     if @topic.votes.count > 0
       @topic.votes.last.destroy
     end
-    redirect_to(topics_path)
+    redirect_to(topics_path, notice: "Topic #{@topic.id} downvoted!")
   end
   
   private

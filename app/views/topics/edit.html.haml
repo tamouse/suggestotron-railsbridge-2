@@ -1,5 +1,4 @@
-%h1 Editing topic
+- content_for :title do
+  = "Editing #{@topic.name}"
+%hr
 = render 'form'
-= link_to 'Show', @topic
-|
-\#{link_to 'Back', topics_path}
