@@ -5,7 +5,9 @@ gem 'rails', '4.0.3'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'jazz_hands'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'awesome_print'
   gem 'better_errors'
   gem 'quiet_assets'
 end

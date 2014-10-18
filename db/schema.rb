@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140607191500) do
+ActiveRecord::Schema.define(version: 20140716142608) do
 
   create_table "topics", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "flag"
+    t.datetime "deleted_at",  null: false
   end
 
   create_table "votes", force: true do |t|

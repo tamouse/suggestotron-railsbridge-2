@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  # so testing this out, someone used t(:'this.should.work')
+  # i usually see t('this.should.work')
+  # it apparently doesn't matter
+  this:
+    should:
+      work: "I think"
